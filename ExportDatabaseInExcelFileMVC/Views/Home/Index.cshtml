@@ -1,0 +1,48 @@
+﻿@model IEnumerable<ExportDatabaseInExcelFileMVC.Models.EmployeeViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>EmployeeId</td>
+            <td>EmployeeName</td>
+            <td>Email</td>
+            <td>Phone</td>
+            <td>Experience</td>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            foreach (var item in Model)
+            {
+                if (item.Experience < 5)
+                {
+                    <tr>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.EmployeeName</td>
+                        <td>@item.Email</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Experience</td>
+                    </tr>
+                }
+                else
+                {
+                    <tr>
+                        <td>@item.EmployeeId</td>
+                        <td>@item.EmployeeName</td>
+                        <td>@item.Email</td>
+                        <td>@item.Phone</td>
+                        <td>@item.Experience</td>
+                    </tr>
+                }
+            }
+        }
+    </tbody>
+</table>
+<div class="navbar-link">
+    <a href="@Url.Action("ExportToExcel", "Home")">Export Excel</a>
+</div>
